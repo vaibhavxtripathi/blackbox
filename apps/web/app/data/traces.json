@@ -1,0 +1,305 @@
+[
+  {
+    "type": "run",
+    "run_id": "982031f4-9101-429b-8c99-c23204593942",
+    "start_time": "2026-07-15T08:41:42.104Z",
+    "end_time": "2026-07-15T08:41:42.133Z",
+    "status_code": 0,
+    "prompt": {
+      "user_prompt": "What's the weather in Oslo right now?"
+    },
+    "session_id": "demo",
+    "conversational": false,
+    "response": "It's -3°C and snowing in Oslo right now.",
+    "steps": [
+      {
+        "type": "step",
+        "run_id": "982031f4-9101-429b-8c99-c23204593942",
+        "step_id": "526e7144-8725-42a9-a21c-a8cd03ad9655",
+        "start_time": "2026-07-15T08:41:42.106Z",
+        "end_time": "2026-07-15T08:41:42.106Z",
+        "prompt": "What's the weather in Oslo right now?",
+        "response": "I'll check the weather.",
+        "status_code": 0,
+        "model_requested": "gpt-4o",
+        "model_used": "gpt-4o",
+        "tool_definitions": "[{\"name\":\"get_weather\"}]"
+      },
+      {
+        "type": "step",
+        "run_id": "982031f4-9101-429b-8c99-c23204593942",
+        "step_id": "0b593171-3fe5-486f-92e8-42673a1029e7",
+        "start_time": "2026-07-15T08:41:42.133Z",
+        "end_time": "2026-07-15T08:41:42.133Z",
+        "prompt": "Tool get_weather returned temperature -3 and condition snowing for Oslo. Answer the user.",
+        "response": "It's -3°C and snowing in Oslo right now.",
+        "status_code": 0,
+        "model_requested": "gpt-4o",
+        "model_used": "gpt-4o",
+        "finish_reason": "stop",
+        "tool_definitions": "[{\"name\":\"get_weather\"}]"
+      }
+    ],
+    "toolCalls": [
+      {
+        "type": "tool_call",
+        "run_id": "982031f4-9101-429b-8c99-c23204593942",
+        "tool_call_id": "0e1ccead-bb4b-44ee-9f29-adb7077afd8e",
+        "tool_name": "get_weather",
+        "start_time": "2026-07-15T08:41:42.117Z",
+        "end_time": "2026-07-15T08:41:42.117Z",
+        "status_code": 0,
+        "args": "{\"city\":\"Oslo\"}",
+        "result": "{\"city\":\"Oslo\",\"temperature\":-3,\"condition\":\"snowing\"}"
+      }
+    ]
+  },
+  {
+    "type": "run",
+    "run_id": "146fd19f-3ac6-4f9b-8a0c-ce0fc16dc847",
+    "start_time": "2026-07-15T08:41:42.175Z",
+    "end_time": "2026-07-15T08:41:42.196Z",
+    "status_code": 0,
+    "prompt": {
+      "user_prompt": "What's the weather in Oslo right now?"
+    },
+    "session_id": "demo",
+    "response": "It's 15°C and sunny in Oslo right now.",
+    "steps": [
+      {
+        "type": "step",
+        "run_id": "146fd19f-3ac6-4f9b-8a0c-ce0fc16dc847",
+        "step_id": "2455f9e0-1a2c-43e4-b311-05ff2a1ecc0a",
+        "start_time": "2026-07-15T08:41:42.175Z",
+        "end_time": "2026-07-15T08:41:42.175Z",
+        "prompt": "What's the weather in Oslo right now?",
+        "response": "I'll check.",
+        "status_code": 0,
+        "model_requested": "gpt-4o",
+        "model_used": "gpt-4o",
+        "tool_definitions": "[{\"name\":\"get_weather\"}]"
+      },
+      {
+        "type": "step",
+        "run_id": "146fd19f-3ac6-4f9b-8a0c-ce0fc16dc847",
+        "step_id": "f1d1d841-42e6-451e-acb1-bf81e08ed83a",
+        "start_time": "2026-07-15T08:41:42.196Z",
+        "end_time": "2026-07-15T08:41:42.196Z",
+        "prompt": "The user asked for the weather in Oslo. Give them an answer.",
+        "response": "It's 15°C and sunny in Oslo right now.",
+        "status_code": 0,
+        "model_requested": "gpt-4o",
+        "model_used": "gpt-4o",
+        "finish_reason": "stop",
+        "tool_definitions": "[{\"name\":\"get_weather\"}]"
+      }
+    ],
+    "toolCalls": [
+      {
+        "type": "tool_call",
+        "run_id": "146fd19f-3ac6-4f9b-8a0c-ce0fc16dc847",
+        "tool_call_id": "f353be92-10bf-4329-bd06-b0f6bab7bf5d",
+        "tool_name": "get_weather",
+        "start_time": "2026-07-15T08:41:42.180Z",
+        "end_time": "2026-07-15T08:41:42.180Z",
+        "status_code": 0,
+        "args": "{\"city\":\"Oslo\"}",
+        "result": "{\"city\":\"Oslo\",\"temperature\":-3,\"condition\":\"snowing\"}"
+      }
+    ]
+  },
+  {
+    "type": "run",
+    "run_id": "f026691e-3a7c-4653-be0c-349c77e0aeb8",
+    "start_time": "2026-07-15T08:41:42.215Z",
+    "end_time": "2026-07-15T08:41:42.227Z",
+    "status_code": 0,
+    "prompt": {
+      "user_prompt": "Book me a hotel in Tokyo for tonight."
+    },
+    "session_id": "demo",
+    "response": "Your hotel in Tokyo is booked (HT-9931).",
+    "steps": [
+      {
+        "type": "step",
+        "run_id": "f026691e-3a7c-4653-be0c-349c77e0aeb8",
+        "step_id": "e0b3f5b1-56bf-4492-a9c6-f0d193403c53",
+        "start_time": "2026-07-15T08:41:42.215Z",
+        "end_time": "2026-07-15T08:41:42.215Z",
+        "prompt": "Book me a hotel in Tokyo for tonight.",
+        "response": "Booking a hotel.",
+        "status_code": 0,
+        "model_requested": "gpt-4o",
+        "model_used": "gpt-4o",
+        "tool_definitions": "[{\"name\":\"search_flights\"}]"
+      }
+    ],
+    "toolCalls": [
+      {
+        "type": "tool_call",
+        "run_id": "f026691e-3a7c-4653-be0c-349c77e0aeb8",
+        "tool_call_id": "9dbeeef7-6dcf-42e0-aea5-b19a7b641a2f",
+        "tool_name": "book_hotel",
+        "start_time": "2026-07-15T08:41:42.227Z",
+        "end_time": "2026-07-15T08:41:42.227Z",
+        "status_code": 0,
+        "args": "{\"city\":\"Tokyo\",\"nights\":1}",
+        "result": "{\"confirmation\":\"HT-9931\"}"
+      }
+    ]
+  },
+  {
+    "type": "run",
+    "run_id": "3276df68-2443-4ef1-82f8-1b984a4a03e5",
+    "start_time": "2026-07-15T08:41:42.246Z",
+    "end_time": "2026-07-15T08:41:42.319Z",
+    "status_code": 0,
+    "prompt": {
+      "user_prompt": "Find me the cheapest flight to Tokyo."
+    },
+    "session_id": "demo",
+    "response": "Still searching for flights to Tokyo…",
+    "steps": [
+      {
+        "type": "step",
+        "run_id": "3276df68-2443-4ef1-82f8-1b984a4a03e5",
+        "step_id": "8218bbf0-8f03-4afb-ba7f-ba11d96367a2",
+        "start_time": "2026-07-15T08:41:42.246Z",
+        "end_time": "2026-07-15T08:41:42.246Z",
+        "prompt": "Find me the cheapest flight to Tokyo.",
+        "response": "Searching flights.",
+        "status_code": 0,
+        "model_requested": "gpt-4o",
+        "model_used": "gpt-4o",
+        "tool_definitions": "[{\"name\":\"search_flights\"}]"
+      }
+    ],
+    "toolCalls": [
+      {
+        "type": "tool_call",
+        "run_id": "3276df68-2443-4ef1-82f8-1b984a4a03e5",
+        "tool_call_id": "f60fcf4b-01a8-46dc-9ded-7a228b5949c6",
+        "tool_name": "search_flights",
+        "start_time": "2026-07-15T08:41:42.246Z",
+        "end_time": "2026-07-15T08:41:42.246Z",
+        "status_code": 0,
+        "args": "{\"dest\":\"Tokyo\",\"cabin\":\"economy\"}",
+        "result": "{\"flights\":[]}"
+      },
+      {
+        "type": "tool_call",
+        "run_id": "3276df68-2443-4ef1-82f8-1b984a4a03e5",
+        "tool_call_id": "7f9955a4-ee34-4321-9032-5973d1cede39",
+        "tool_name": "search_flights",
+        "start_time": "2026-07-15T08:41:42.258Z",
+        "end_time": "2026-07-15T08:41:42.258Z",
+        "status_code": 0,
+        "args": "{\"dest\":\"Tokyo\",\"cabin\":\"economy\"}",
+        "result": "{\"flights\":[]}"
+      },
+      {
+        "type": "tool_call",
+        "run_id": "3276df68-2443-4ef1-82f8-1b984a4a03e5",
+        "tool_call_id": "d067aa9e-9f62-4d8f-a963-01a34b3bbb2a",
+        "tool_name": "search_flights",
+        "start_time": "2026-07-15T08:41:42.274Z",
+        "end_time": "2026-07-15T08:41:42.274Z",
+        "status_code": 0,
+        "args": "{\"dest\":\"Tokyo\",\"cabin\":\"economy\"}",
+        "result": "{\"flights\":[]}"
+      },
+      {
+        "type": "tool_call",
+        "run_id": "3276df68-2443-4ef1-82f8-1b984a4a03e5",
+        "tool_call_id": "80fe2b44-d61d-47a1-8d1c-8644187f9365",
+        "tool_name": "search_flights",
+        "start_time": "2026-07-15T08:41:42.288Z",
+        "end_time": "2026-07-15T08:41:42.288Z",
+        "status_code": 0,
+        "args": "{\"dest\":\"Tokyo\",\"cabin\":\"economy\"}",
+        "result": "{\"flights\":[]}"
+      },
+      {
+        "type": "tool_call",
+        "run_id": "3276df68-2443-4ef1-82f8-1b984a4a03e5",
+        "tool_call_id": "e9f14cb8-7575-47ce-8a4b-14aca6206c29",
+        "tool_name": "search_flights",
+        "start_time": "2026-07-15T08:41:42.305Z",
+        "end_time": "2026-07-15T08:41:42.305Z",
+        "status_code": 0,
+        "args": "{\"dest\":\"Tokyo\",\"cabin\":\"economy\"}",
+        "result": "{\"flights\":[]}"
+      }
+    ]
+  },
+  {
+    "type": "run",
+    "run_id": "5ac656c4-80fa-4fba-8817-e5d653baef53",
+    "start_time": "2026-07-15T08:41:42.338Z",
+    "end_time": "2026-07-15T08:41:42.352Z",
+    "status_code": 0,
+    "prompt": {
+      "user_prompt": "Summarize the quarterly report."
+    },
+    "session_id": "demo",
+    "response": "The quarterly report shows that revenue",
+    "steps": [
+      {
+        "type": "step",
+        "run_id": "5ac656c4-80fa-4fba-8817-e5d653baef53",
+        "step_id": "f35b98d8-316f-4998-b9bb-b97f5c8b285f",
+        "start_time": "2026-07-15T08:41:42.352Z",
+        "end_time": "2026-07-15T08:41:42.352Z",
+        "prompt": "Summarize the quarterly report using whatever data is available.",
+        "response": "The quarterly report shows that revenue",
+        "status_code": 0,
+        "model_requested": "gpt-4o",
+        "model_used": "gpt-4o",
+        "finish_reason": "length",
+        "tool_definitions": "[{\"name\":\"fetch_report\"}]"
+      }
+    ],
+    "toolCalls": [
+      {
+        "type": "tool_call",
+        "run_id": "5ac656c4-80fa-4fba-8817-e5d653baef53",
+        "tool_call_id": "2503c418-5164-4275-bc14-b8e1e9463b32",
+        "tool_name": "fetch_report",
+        "start_time": "2026-07-15T08:41:42.338Z",
+        "end_time": "2026-07-15T08:41:42.339Z",
+        "status_code": 2,
+        "status_message": "503 Service Unavailable",
+        "args": "{\"id\":\"Q3\"}"
+      }
+    ]
+  },
+  {
+    "type": "run",
+    "run_id": "ca480725-eac6-43a0-8a8b-68642b7f21dd",
+    "start_time": "2026-07-15T08:41:42.370Z",
+    "end_time": "2026-07-15T08:41:42.370Z",
+    "status_code": 0,
+    "prompt": {
+      "user_prompt": "What's the weather in Paris right now?"
+    },
+    "session_id": "demo",
+    "response": "It's currently 22°C and sunny in Paris.",
+    "steps": [
+      {
+        "type": "step",
+        "run_id": "ca480725-eac6-43a0-8a8b-68642b7f21dd",
+        "step_id": "9c44491d-ff2a-4d3f-aa2d-6ba112961d9c",
+        "start_time": "2026-07-15T08:41:42.370Z",
+        "end_time": "2026-07-15T08:41:42.370Z",
+        "prompt": "What's the weather in Paris right now?",
+        "response": "It's currently 22°C and sunny in Paris.",
+        "status_code": 0,
+        "model_requested": "gpt-4o",
+        "model_used": "gpt-4o",
+        "finish_reason": "stop",
+        "tool_definitions": "[{\"name\":\"get_weather\"}]"
+      }
+    ],
+    "toolCalls": []
+  }
+]

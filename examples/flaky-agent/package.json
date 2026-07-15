@@ -1,0 +1,12 @@
+{
+  "name": "@blackbox/flaky-agent",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "capture": "tsx src/agent.ts"
+  },
+  "dependencies": {
+    "@contextcompany/custom": "^1.2.1"
+  }
+}

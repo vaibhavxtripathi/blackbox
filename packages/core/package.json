@@ -1,0 +1,11 @@
+{
+  "name": "@blackbox/core",
+  "version": "0.1.0",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./replay": "./src/replay.ts",
+    "./matchers": "./src/matchers.ts"
+  },
+  "license": "MIT"
+}

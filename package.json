@@ -1,0 +1,29 @@
+{
+  "name": "blackbox",
+  "version": "0.1.0",
+  "private": true,
+  "description": "The flight recorder for AI agents — turns a crashed agent run into a regression test.",
+  "author": "Vaibhav Tripathi <vaibhavxtripathi@gmail.com>",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit",
+    "capture": "tsx examples/flaky-agent/src/agent.ts",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "prettier": "^3.4.2",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ]
+  }
+}
