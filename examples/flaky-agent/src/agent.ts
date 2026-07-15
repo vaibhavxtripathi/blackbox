@@ -52,10 +52,7 @@ function startServer(): Promise<() => Promise<void>> {
       });
     });
     server.listen(PORT, "127.0.0.1", () =>
-      resolveStart(
-        () =>
-          new Promise<void>((r) => server.close(() => r()))
-      )
+      resolveStart(() => new Promise<void>((r) => server.close(() => r())))
     );
   });
 }
@@ -186,9 +183,7 @@ async function looping() {
 
   for (let i = 0; i < 5; i++) {
     const tc = r.toolCall("search_flights");
-    tc.args({ dest: "Tokyo", cabin: "economy" })
-      .result({ flights: [] })
-      .end();
+    tc.args({ dest: "Tokyo", cabin: "economy" }).result({ flights: [] }).end();
     await sleep(1);
   }
 

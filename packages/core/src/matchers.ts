@@ -51,7 +51,9 @@ expect.extend({
     const prior = tokenize(
       [trace.userPrompt, trace.systemPrompt ?? ""].join(" ")
     );
-    const promptTokens = tokenize(trace.steps.map((s) => s.prompt).join(" \n "));
+    const promptTokens = tokenize(
+      trace.steps.map((s) => s.prompt).join(" \n ")
+    );
     const calls = trace.toolCalls.filter((tc) => tc.name === toolName);
 
     if (calls.length === 0) {

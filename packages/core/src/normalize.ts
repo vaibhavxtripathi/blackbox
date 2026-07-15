@@ -62,11 +62,17 @@ export function extractDeclaredTools(raw: string | undefined): string[] {
   return [...new Set(names)];
 }
 
-function parseArgs(raw: string | undefined): Record<string, unknown> | undefined {
+function parseArgs(
+  raw: string | undefined
+): Record<string, unknown> | undefined {
   if (!raw) return undefined;
   try {
     const parsed = JSON.parse(raw);
-    if (typeof parsed === "object" && parsed !== null && !Array.isArray(parsed)) {
+    if (
+      typeof parsed === "object" &&
+      parsed !== null &&
+      !Array.isArray(parsed)
+    ) {
       return parsed as Record<string, unknown>;
     }
   } catch {
@@ -120,9 +126,7 @@ export function normalize(bundle: WireRunBundle): Trace {
     (a, b) => a.startTime - b.startTime
   );
 
-  const declaredTools = [
-    ...new Set(steps.flatMap((s) => s.declaredTools)),
-  ];
+  const declaredTools = [...new Set(steps.flatMap((s) => s.declaredTools))];
 
   return {
     runId: bundle.run_id,

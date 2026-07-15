@@ -36,7 +36,10 @@ export function tokenize(text: string): Set<string> {
 }
 
 /** Tokens present in `result` but absent from every source the model already had. */
-function novelTokens(tc: NormalizedToolCall, priorContext: Set<string>): Set<string> {
+function novelTokens(
+  tc: NormalizedToolCall,
+  priorContext: Set<string>
+): Set<string> {
   if (tc.resultRaw === undefined) return new Set();
   const resultTokens = tokenize(tc.resultRaw);
   const argTokens = tc.argsRaw ? tokenize(tc.argsRaw) : new Set<string>();

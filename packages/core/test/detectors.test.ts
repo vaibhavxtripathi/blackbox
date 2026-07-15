@@ -1,5 +1,10 @@
 import { describe, it, expect } from "vitest";
-import { analyze, normalize, extractDeclaredTools, generateEval } from "../src/index";
+import {
+  analyze,
+  normalize,
+  extractDeclaredTools,
+  generateEval,
+} from "../src/index";
 import { tokenize } from "../src/detectors/context";
 import * as fx from "./fixtures";
 import type { DetectorId, WireRunBundle } from "../src/types";
@@ -13,7 +18,11 @@ describe("normalize", () => {
     const t = normalize({
       ...fx.healthy,
       toolCalls: [
-        { ...fx.healthy.toolCalls![0]!, tool_name: undefined, name: "aliased" } as any,
+        {
+          ...fx.healthy.toolCalls![0]!,
+          tool_name: undefined,
+          name: "aliased",
+        } as any,
       ],
     });
     expect(t.toolCalls[0]!.name).toBe("aliased");
@@ -44,10 +53,9 @@ describe("extractDeclaredTools", () => {
   });
 
   it("parses bare { name } entries", () => {
-    expect(extractDeclaredTools(JSON.stringify([{ name: "a" }, { name: "b" }]))).toEqual([
-      "a",
-      "b",
-    ]);
+    expect(
+      extractDeclaredTools(JSON.stringify([{ name: "a" }, { name: "b" }]))
+    ).toEqual(["a", "b"]);
   });
 
   it("parses record { toolName: {...} } shape", () => {
@@ -98,7 +106,9 @@ describe("dropped_tool_result (the hero)", () => {
   });
 
   it("still fires when all timestamps collide in one millisecond (bug #5)", () => {
-    expect(detectorsFor(fx.droppedContextSameMs)).toContain("dropped_tool_result");
+    expect(detectorsFor(fx.droppedContextSameMs)).toContain(
+      "dropped_tool_result"
+    );
   });
 
   it("does NOT fire when the tool only echoes its own args (bug #4)", () => {
@@ -120,7 +130,9 @@ describe("hallucinated_tool", () => {
   it("stays silent when no tools are declared at all", () => {
     const bundle: WireRunBundle = {
       ...fx.hallucinatedTool,
-      steps: [{ ...fx.hallucinatedTool.steps![0]!, tool_definitions: undefined }],
+      steps: [
+        { ...fx.hallucinatedTool.steps![0]!, tool_definitions: undefined },
+      ],
     };
     expect(detectorsFor(bundle)).not.toContain("hallucinated_tool");
   });

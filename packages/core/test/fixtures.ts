@@ -58,7 +58,11 @@ export const healthy: WireRunBundle = {
       end_time: T1,
       status_code: 0,
       args: JSON.stringify({ city: "Oslo" }),
-      result: JSON.stringify({ city: "Oslo", temperature: -3, condition: "snowing" }),
+      result: JSON.stringify({
+        city: "Oslo",
+        temperature: -3,
+        condition: "snowing",
+      }),
     },
   ],
 };
@@ -107,7 +111,11 @@ export const droppedContext: WireRunBundle = {
       end_time: T1,
       status_code: 0,
       args: JSON.stringify({ city: "Oslo" }),
-      result: JSON.stringify({ city: "Oslo", temperature: -3, condition: "snowing" }),
+      result: JSON.stringify({
+        city: "Oslo",
+        temperature: -3,
+        condition: "snowing",
+      }),
     },
   ],
 };
@@ -272,19 +280,22 @@ export const oscillating: WireRunBundle = {
       tool_definitions: defs(["add_to_cart", "remove_from_cart"]),
     },
   ],
-  toolCalls: ["add_to_cart", "remove_from_cart", "add_to_cart", "remove_from_cart"].map(
-    (name, i) => ({
-      type: "tool_call" as const,
-      run_id: "run_osc",
-      tool_call_id: `tc${i}`,
-      tool_name: name,
-      start_time: T1,
-      end_time: T1,
-      status_code: 0,
-      args: JSON.stringify({ item: `item${i}` }),
-      result: JSON.stringify({ ok: true }),
-    })
-  ),
+  toolCalls: [
+    "add_to_cart",
+    "remove_from_cart",
+    "add_to_cart",
+    "remove_from_cart",
+  ].map((name, i) => ({
+    type: "tool_call" as const,
+    run_id: "run_osc",
+    tool_call_id: `tc${i}`,
+    tool_name: name,
+    start_time: T1,
+    end_time: T1,
+    status_code: 0,
+    args: JSON.stringify({ item: `item${i}` }),
+    result: JSON.stringify({ ok: true }),
+  })),
 };
 
 export const truncatedAndErrored: WireRunBundle = {

@@ -12,11 +12,7 @@
  */
 
 import { normalize } from "./normalize";
-import type {
-  NormalizedToolCall,
-  Trace,
-  WireRunBundle,
-} from "./types";
+import type { NormalizedToolCall, Trace, WireRunBundle } from "./types";
 
 export interface ReplayHandle {
   trace: Trace;

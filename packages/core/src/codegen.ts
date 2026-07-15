@@ -138,7 +138,11 @@ function rebuildBundle(analysis: AnalysisResult): unknown {
       ...(s.modelUsed ? { model_used: s.modelUsed } : {}),
       ...(s.finishReason ? { finish_reason: s.finishReason } : {}),
       ...(s.declaredTools.length
-        ? { tool_definitions: JSON.stringify(s.declaredTools.map((n) => ({ name: n }))) }
+        ? {
+            tool_definitions: JSON.stringify(
+              s.declaredTools.map((n) => ({ name: n }))
+            ),
+          }
         : {}),
     })),
     toolCalls: trace.toolCalls.map((tc) => ({
