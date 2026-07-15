@@ -240,6 +240,16 @@ export function Dashboard({ runs }: { runs: RunView[] }) {
         ))}
       </div>
 
+      <RunPanels run={run} />
+    </>
+  );
+}
+
+/** The vitals → verdict → findings → timeline → test stack for a single run.
+ *  Shared by the demo dashboard and the "analyze your own trace" box. */
+export function RunPanels({ run }: { run: RunView }) {
+  return (
+    <>
       <Vitals v={run.vitals} />
       <Verdict run={run} />
       <Findings findings={run.findings} />
