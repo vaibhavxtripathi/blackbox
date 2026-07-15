@@ -15,45 +15,27 @@ export default function Page() {
         <div className="logo">
           BLACKBOX<span className="dot">.</span>
         </div>
-        <div className="tagline">
-          Observatory watches. Liftoff starts.{" "}
-          <b>Blackbox is the flight recorder</b> — it turns a crashed agent run
-          into a regression test so it never crashes the same way twice.
-        </div>
+        <h1 className="lede">
+          The run was <span className="em">green</span>. The answer was wrong.
+        </h1>
+        <p className="sub">
+          Agents fail silently — status 200, dashboards clean, answer
+          fabricated. Blackbox reads a run, catches the failure with
+          deterministic checks, and writes a test so it can’t come back.
+        </p>
       </header>
 
-      <section className="intro">
-        <p>
-          AI agents fail <b>silently</b>: the run returns{" "}
-          <span className="mono ok">200 OK</span>, every dashboard stays green —
-          and the answer is still wrong. Blackbox reads a run and catches those
-          failures with pure, deterministic checks (no LLM), then writes a test
-          so the same bug can’t come back.
-        </p>
-        <p className="intro-cta">
-          Below are six real runs. Click a <span className="red-dot">red</span>{" "}
-          one to see a caught failure — or scroll down and{" "}
-          <b>paste your own trace</b> to run the detectors yourself.
-        </p>
-      </section>
-
       <Dashboard runs={runs} />
-
-      <div className="divider" />
 
       <Analyzer />
 
       <footer className="foot">
-        These traces were not written by hand. They were produced by running a
-        deliberately flaky agent against{" "}
+        Traces are real: captured from{" "}
         <a href="https://www.npmjs.com/package/@contextcompany/custom">
           @contextcompany/custom
-        </a>{" "}
-        — the real published SDK — with the transport pointed at a local capture
-        server. Every byte is what the SDK actually serialized.
-        <br />
-        Detection is pure deterministic TypeScript; no LLM is called. Aesthetic
-        owes a debt to React Scan and the Next.js Devtools overlay.
+        </a>
+        , the published SDK, through a local transport. Detection is pure
+        TypeScript — no model calls.
       </footer>
     </main>
   );

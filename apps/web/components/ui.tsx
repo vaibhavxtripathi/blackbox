@@ -43,40 +43,34 @@ export interface RunView {
 function Vitals({ v }: { v: VitalsView }) {
   const ok = (n: number) => n === 0;
   return (
-    <div className="panel">
-      <div className="panel-head">
-        <span>Vitals — what your dashboard sees</span>
-        <span className="aside">the metrics that stayed green</span>
+    <div className="vitals">
+      <div className="vital">
+        <div className="k">Status</div>
+        <div className="v ok">
+          {v.statusCode === 0 ? "200 OK" : `ERR ${v.statusCode}`}{" "}
+          <span className="tick">✓</span>
+        </div>
       </div>
-      <div className="vitals">
-        <div className="vital">
-          <div className="k">HTTP status</div>
-          <div className="v ok">
-            {v.statusCode === 0 ? "200 OK" : `ERR ${v.statusCode}`}{" "}
-            <span className="check">✓</span>
-          </div>
+      <div className="vital">
+        <div className="k">Latency</div>
+        <div className="v ok">
+          {v.latencyMs}ms <span className="tick">✓</span>
         </div>
-        <div className="vital">
-          <div className="k">Latency</div>
-          <div className="v ok">
-            {v.latencyMs}ms <span className="check">✓</span>
-          </div>
+      </div>
+      <div className="vital">
+        <div className="k">Errored spans</div>
+        <div className={"v" + (ok(v.erroredSpans) ? " ok" : "")}>
+          {v.erroredSpans}{" "}
+          {ok(v.erroredSpans) && <span className="tick">✓</span>}
         </div>
-        <div className="vital">
-          <div className="k">Errored spans</div>
-          <div className={"v" + (ok(v.erroredSpans) ? " ok" : "")}>
-            {v.erroredSpans}{" "}
-            {ok(v.erroredSpans) && <span className="check">✓</span>}
-          </div>
-        </div>
-        <div className="vital">
-          <div className="k">Tokens</div>
-          <div className="v">{v.tokens}</div>
-        </div>
-        <div className="vital">
-          <div className="k">Tool calls</div>
-          <div className="v">{v.toolCalls}</div>
-        </div>
+      </div>
+      <div className="vital">
+        <div className="k">Tokens</div>
+        <div className="v">{v.tokens}</div>
+      </div>
+      <div className="vital">
+        <div className="k">Tool calls</div>
+        <div className="v">{v.toolCalls}</div>
       </div>
     </div>
   );
@@ -86,25 +80,22 @@ function Verdict({ run }: { run: RunView }) {
   if (run.findingCount === 0) {
     return (
       <div className="verdict good">
-        <span className="pulse" />
+        <span className="mark">✓</span>
         <span>
-          Blackbox found <b>0 failures</b>. This run is clean — the dashboard is
-          telling the truth.
+          Clean run — nothing hidden. The dashboard is telling the truth.
         </span>
       </div>
     );
   }
   return (
     <div className="verdict bad">
-      <span className="pulse" />
+      <span className="mark">✕</span>
       <span>
-        Blackbox found{" "}
-        <span className="count">
-          {run.findingCount} failure{run.findingCount > 1 ? "s" : ""}
-        </span>
-        {" — "}
-        <span className="count">{run.silentCount} silent</span>, invisible to
-        every metric above.
+        <b>
+          {run.findingCount} failure{run.findingCount > 1 ? "s" : ""} —{" "}
+          {run.silentCount} silent
+        </b>
+        , invisible to every metric above.
       </span>
     </div>
   );
@@ -114,10 +105,7 @@ function Findings({ findings }: { findings: FindingView[] }) {
   if (findings.length === 0) return null;
   return (
     <div className="panel">
-      <div className="panel-head">
-        <span>Findings</span>
-        <span className="aside">deterministic — no LLM was called</span>
-      </div>
+      <div className="panel-head">Findings</div>
       {findings.map((f, i) => (
         <div className="finding" key={i}>
           <div className="finding-head">
@@ -136,35 +124,28 @@ function Findings({ findings }: { findings: FindingView[] }) {
 function Timeline({ rows }: { rows: TimelineRow[] }) {
   return (
     <div className="panel">
-      <div className="panel-head">
-        <span>Timeline</span>
-        <span className="aside">steps and tool calls, in order</span>
-      </div>
-      <div className="timeline">
-        {rows.map((r, i) => (
-          <div className={"tl-row" + (r.flagged ? " flagged" : "")} key={i}>
-            <div
-              className={"tl-kind" + (r.kind === "tool_call" ? " tool" : "")}
-            >
-              {r.kind === "tool_call" ? "tool" : "step"}
-            </div>
-            <div className="tl-body">
-              <div>
-                <span className="name">{r.name}</span>
-                <span
-                  className={"tl-badge " + (r.statusCode === 2 ? "err" : "ok")}
-                >
-                  {r.statusCode === 2 ? "status 2" : "status 0"}
-                </span>
-              </div>
-              <div className="meta">{r.meta}</div>
-              {r.flagged && r.flagReason && (
-                <div className="flag">▲ {r.flagReason}</div>
-              )}
-            </div>
+      <div className="panel-head">Timeline</div>
+      {rows.map((r, i) => (
+        <div className={"tl-row" + (r.flagged ? " flagged" : "")} key={i}>
+          <div className={"tl-kind" + (r.kind === "tool_call" ? " tool" : "")}>
+            {r.kind === "tool_call" ? "tool" : "step"}
           </div>
-        ))}
-      </div>
+          <div className="tl-body">
+            <div>
+              <span className="name">{r.name}</span>
+              <span
+                className={"tl-badge " + (r.statusCode === 2 ? "err" : "ok")}
+              >
+                {r.statusCode === 2 ? "error" : "ok"}
+              </span>
+            </div>
+            <div className="meta">{r.meta}</div>
+            {r.flagged && r.flagReason && (
+              <div className="flag">↳ {r.flagReason}</div>
+            )}
+          </div>
+        </div>
+      ))}
     </div>
   );
 }
@@ -194,8 +175,7 @@ function GeneratedTest({ code }: { code: string }) {
   return (
     <div className="panel">
       <div className="panel-head">
-        <span>Generated regression test</span>
-        <span className="aside">hermetic · inlined · runs in CI forever</span>
+        Generated test · hermetic, runs in CI forever
       </div>
       <div className="codewrap">
         <button
@@ -224,7 +204,7 @@ export function Dashboard({ runs }: { runs: RunView[] }) {
 
   return (
     <>
-      <div className="section-label">Runs — pick one</div>
+      <div className="eyebrow">Recorded runs</div>
       <div className="chips">
         {runs.map((r, i) => (
           <button
@@ -232,9 +212,7 @@ export function Dashboard({ runs }: { runs: RunView[] }) {
             className={"chip" + (i === active ? " active" : "")}
             onClick={() => setActive(i)}
           >
-            <span
-              className={"status-dot " + (r.ok ? "dot-green" : "dot-red")}
-            />
+            <span className={"dot " + (r.ok ? "dot-green" : "dot-red")} />
             {r.label}
           </button>
         ))}
@@ -250,8 +228,10 @@ export function Dashboard({ runs }: { runs: RunView[] }) {
 export function RunPanels({ run }: { run: RunView }) {
   return (
     <>
-      <Vitals v={run.vitals} />
-      <Verdict run={run} />
+      <div className="cluster">
+        <Vitals v={run.vitals} />
+        <Verdict run={run} />
+      </div>
       <Findings findings={run.findings} />
       <Timeline rows={run.timeline} />
       {run.findingCount > 0 && <GeneratedTest code={run.code} />}

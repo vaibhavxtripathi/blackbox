@@ -68,17 +68,11 @@ export function Analyzer() {
 
   return (
     <>
-      <div className="section-label">Analyze your own trace</div>
-      <div className="analyzer">
-        <p className="analyzer-hint">
-          Paste a trace your agent produced — a single run, an array of runs, or
-          the raw <code>{`{ type:"batch", items:[…] }`}</code> your SDK puts on
-          the wire. The detectors run <b>in your browser</b>. Nothing is
-          uploaded; nothing is pre-computed.
-        </p>
+      <div className="eyebrow">Run it on your own trace</div>
+      <div>
         <textarea
-          className="analyzer-input mono"
-          placeholder="Paste trace JSON here…"
+          className="analyzer-input"
+          placeholder="Paste trace JSON — a run, an array, or the raw batch your SDK sends. Runs in your browser."
           value={text}
           onChange={(e) => setText(e.target.value)}
           spellCheck={false}
@@ -89,7 +83,7 @@ export function Analyzer() {
             onClick={() => run(text)}
             disabled={text.trim().length === 0}
           >
-            Analyze ▸
+            Analyze
           </button>
           <button
             className="btn"
@@ -112,23 +106,16 @@ export function Analyzer() {
               Clear
             </button>
           )}
-          <span className="analyzer-note">
-            Tip: the example fails because the tool’s result (
-            <b>-3°C, snowing</b>) never appears in the step’s{" "}
-            <code>prompt</code>. Paste those words into the step prompt and
-            re-run — the failure disappears, because now the model actually saw
-            them.
-          </span>
         </div>
 
-        {error && <div className="analyzer-error mono">✕ {error}</div>}
+        {error && <div className="analyzer-error">{error}</div>}
       </div>
 
       {views &&
         views.map((v, i) => (
           <div key={i} className="analyzer-result">
             {views.length > 1 && (
-              <div className="section-label" style={{ marginTop: 24 }}>
+              <div className="eyebrow">
                 {v.label} —{" "}
                 {v.findingCount === 0
                   ? "clean"
