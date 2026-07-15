@@ -11,3 +11,5 @@ out/
 .claude/
 next-env.d.ts
 instructions.md
+
+.vercel
