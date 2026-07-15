@@ -13,3 +13,5 @@ next-env.d.ts
 instructions.md
 
 .vercel
+.agents/
+skills-lock.json
