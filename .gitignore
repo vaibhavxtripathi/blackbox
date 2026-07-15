@@ -9,3 +9,5 @@ out/
 .env.local
 
 .claude/
+next-env.d.ts
+instructions.md
